@@ -1,0 +1,38 @@
+.tab {
+  &__items {
+    display: inline-block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    display: inline-block;
+  }
+
+  &__link {
+    font-weight: 500;
+    color: $color-purple-400;
+    position: relative;
+    display: block;
+    @include rem(padding, 10px 15px);
+    @include rem(font-size, 14px);
+
+    &:hover,:focus {
+      text-decoration: none;
+    }
+
+    &--active {
+      color: $color-green-100;
+      border-bottom: 2px solid $color-green-100;
+    }
+  }
+
+  &__icon {
+    @include rem(margin-right, 5px);
+  }
+}

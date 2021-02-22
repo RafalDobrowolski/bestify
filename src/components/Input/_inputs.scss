@@ -1,0 +1,42 @@
+
+@import "../../scss/utils/variables";
+
+$font-size: 16px;
+$line-height: 1.5;
+$input-height: $line-height * $font-size;
+
+@mixin input-styles {
+  padding: 4px 10px;
+  height: $input-height;
+  line-height: $line-height;
+  font-size: $font-size;
+  outline: none;
+  width: calc(100% - 22px);
+}
+
+
+@mixin number-input-styles {
+  background-color: $color-white;
+  padding: 4px 12px;
+  height: $input-height;
+  line-height: $line-height;
+  font-size: $font-size;
+  outline: none;
+  width: 6rem;
+  max-width: 100%;
+  transition: border-color 0.15s;
+  box-shadow: $box-shadow-light;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+  &:focus {
+    border-color: #0074d9;
+    outline: none;
+  }
+  &:disabled,
+  &[readonly] {
+    background-color: $color-blue-grey-50;
+  }
+}

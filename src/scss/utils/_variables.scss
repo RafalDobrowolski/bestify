@@ -1,0 +1,119 @@
+$color-purple-100:rgb(117, 111, 175);
+$color-purple-150: #e0e5ea;
+$color-purple-200: rgb(84,70,176);
+$color-purple-300: rgb(71,60,150);
+$color-purple-400: #756faf;
+
+$color-green-100: rgb(0,210,90);
+$color-green-200: rgb(0, 200, 86);
+$color-green-300: rgb(0,149,64);
+
+$color-greY-20: #fbfcfd;
+$color-grey-50: rgb(207,212,217);
+$color-grey-100: rgb(157,161,164);
+$color-grey-150: #f4f4f4;
+$color-grey-200: rgb(152,156,159);
+$color-grey-300: rgb(126,131,134);
+$color-grey-400: rgb(84,91,98);
+$color-grey-500: #e0e5ea;
+$color-grey-600: #838383;
+
+$color-blue-grey-50: #e3e9ef;
+
+$color-red-200: red;
+$color-red-300: rgb(204,0,0);
+
+$color-white: rgb(255, 255, 255);
+
+$box-shadow-button-primary: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+$box-shadow-button-secondary: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
+$box-shadow-light: 0px 2px 4px 0 rgba(206, 212, 218, 0.6);
+
+$color-primary: $color-purple-200;
+$color-primary-darker: $color-purple-300;
+$color-primary-lighter: $color-purple-100;
+
+$border-radius: 4px;
+
+$modal-z-index: 9998;
+
+$transition-fast: 0.3s ease-out;
+
+@mixin border-styles {
+  border: solid 1px $color-grey-50;
+  border-radius: $border-radius;
+}
+
+@mixin light-border-styles {
+  border: solid 1px $color-grey-500;
+  border-radius: $border-radius;
+}
+
+@mixin light-left-border-styles {
+  border: solid 1px $color-grey-500;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: $border-radius;
+  border-top-left-radius: $border-radius;
+}
+
+@mixin light-right-border-styles {
+  border: solid 1px $color-grey-500;
+  border-bottom-right-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
+@mixin pastTimeSlot {
+  background-color: #dedede;
+  background-image: linear-gradient(-45deg, #eaeaea 12.5%, transparent 12.5%, transparent 50%, #eaeaea 50%, #eaeaea 62.5%, transparent 62.5%, transparent);
+  background-size: 7px 7px, 100%;
+}
+
+@mixin pastEvent {
+  background-color: $color-grey-200;
+}
+
+@function parseInt($n) {
+  // parse integer from a value with a unit
+  @return $n / ($n * 0 + 1);
+}
+
+$pixelBase : 16;
+
+@mixin rem($property, $values) {
+  $px: ();
+  $rem: ();
+
+  @each $value in $values {
+    //iterate through each value
+    @if $value == 0 or $value == auto or $value == !important {
+      // if auto or 0, append it to the list
+      $px: append($px, $value);
+      $rem: append($rem, $value);
+    } @else {
+      // If the value has a unit, we split it to get both the unit and the raw value
+      $unit: unit($value);
+      $val: parseInt($value);
+
+      @if $unit == 'px' {
+        $px: append($px, $value);
+        $rem: append($rem, ($val / $pixelBase + rem));
+      }
+
+      @if $unit == 'rem' {
+        $px: append($px, ($val * $pixelBase + px));
+        $rem: append($rem, $value);
+      }
+    }
+  }
+
+  @if $px == $rem {
+    //If the two lists are the same, we ouput only one (like margin-top: 0)
+    #{$property}: $px;
+  } @else {
+    #{$property}: $px;
+    #{$property}: $rem;
+  }
+}
