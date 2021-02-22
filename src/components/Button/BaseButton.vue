@@ -1,23 +1,39 @@
 <template>
   <button
     class="b-btn"
+    :class="buttonClass"
     v-bind="$attrs"
+    v-on="$listeners"
   >
     <slot></slot>
   </button>
 </template>
 
 <script>
+  import { TYPE } from "./BaseButton.types";
+
   export default {
     name: "bButon",
-    type: {
-      type: String,
-      default: ""
-    }
+    props: {
+      type: {
+        type: String,
+        default: ""
+      }
+   },
+    computed: {
+      buttonClass() {
+        return {
+          "b-btn__primary": this.type === TYPE.PRIMARY,
+          "b-btn__secondary": this.type === TYPE.SECONDARY
+        }
+      }
+    },
   }
 </script>
 
 <style lang="scss" scoped>
+  @import "../../../src/scss/utils/_variables.scss";
+
   .b-btn {
     display: inline-flex;
     align-items: center;
@@ -40,6 +56,26 @@
     }
     &:focus {
       outline: none;
+    }
+
+    &__primary {
+      background-color: $color-purple-200;
+      color: $color-white;
+      border-color: transparent;
+
+      &:hover {
+        background-color: $color-purple-400;
+      }
+    }
+
+    &__secondary {
+      background-color: $color-green-100;
+      color: $color-white;
+      border-color: transparent;
+
+      &:hover {
+        background-color: $color-green-200;
+      }
     }
 }
 </style>
