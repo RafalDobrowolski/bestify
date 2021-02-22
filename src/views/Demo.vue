@@ -1,11 +1,12 @@
 <template>
   <div class="demo">
     <div class="demo__item">
-      <div>Button:</div>
-      <b-button class="test" @click="onClick">Test</b-button>
+      <div class="demo__item-label">Buttons:</div>
+      <b-button :type="primary" @click="onClick">Primary</b-button>
+      <b-button :type="secondary" @click="onClick">Secondary</b-button>
     </div>
     <div class="demo__item">
-      <div>Number Input:</div>
+      <div class="demo__item-label">Number Input:</div>
       <b-number-input :min="minInputValue" v-model="numberValue"/>
     </div>
   </div>
@@ -14,6 +15,8 @@
 <script>
   import BNumberInput from "../components/Input/NumberInput";
   import BButton from "../components/Button/BaseButton"
+  import { TYPE } from "../components/Button/BaseButton.types";
+
   export default {
     components: { BNumberInput, BButton },
     data() {
@@ -24,7 +27,15 @@
     },
     methods: {
       onClick() {
-        debugger
+        alert("clicked me");
+      }
+    },
+    computed: {
+      primary() {
+        return TYPE.PRIMARY;
+      },
+      secondary() {
+        return TYPE.SECONDARY;
       }
     },
   }
@@ -37,7 +48,18 @@
     flex-direction: column;
 
     &__item {
+      display: flex;
+      align-items: center;
       padding: 10px;
+
+      > button {
+        margin-right: 10px;
+      }
+    }
+
+    &__item-label {
+      min-width: 200px;
+      margin-right: 10px;
     }
   }
 </style>
