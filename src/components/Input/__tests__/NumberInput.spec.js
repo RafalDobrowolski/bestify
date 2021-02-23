@@ -1,19 +1,19 @@
 import { mount } from '@vue/test-utils';
-import NumberInput from "../NumberInput";
+import bNumberInput from "../NumberInput";
 
 describe('NumberInput', () => {
   test('NumberInput is rendered correctly', () => {
-    const wrapper = mount(NumberInput);
+    const wrapper = mount(bNumberInput);
     expect(wrapper.html()).toMatchSnapshot()
   });
 
   test('NumberInput is rendered Button component', () => {
-    const wrapper = mount(NumberInput);
+    const wrapper = mount(bNumberInput);
     expect(wrapper.contains('button')).toBeTruthy();
   });
 
   test('NumberInput is increment or decrement', () => {
-    const wrapper = mount(NumberInput);
+    const wrapper = mount(bNumberInput);
     wrapper.vm.currentValue = 10;
 
     wrapper.setProps({ min: 5, max: 10 });
@@ -24,7 +24,7 @@ describe('NumberInput', () => {
   });
 
   test('NumberInput is increment or decrement with step', () => {
-    const wrapper = mount(NumberInput);
+    const wrapper = mount(bNumberInput);
     wrapper.setProps({ step: 2, min:5 });
     wrapper.vm.currentValue = 10;
     wrapper.vm.removeNumber();
@@ -37,7 +37,7 @@ describe('NumberInput', () => {
 
 
   test('NumberInput is increments or decrements on click', async () => {
-    const wrapper = mount(NumberInput);
+    const wrapper = mount(bNumberInput);
     wrapper.setProps({value: 5, step: 1, max: 10});
     wrapper.vm.currentValue = 5;
     wrapper.find('.number-input__button--add').trigger('click');
@@ -49,7 +49,7 @@ describe('NumberInput', () => {
   });
 
   test('NumberInput is disabled', () => {
-    const wrapper = mount(NumberInput, {
+    const wrapper = mount(bNumberInput, {
       propsData: {
         disabled: true
       }

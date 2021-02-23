@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NumberInput NumberInput is rendered correctly 1`] = `
+<div class="number-input"><input type="number" step="1" min="-Infinity" max="Infinity" class="number-input__input"> <button type="button" tabindex="-1" class="number-input__button number-input__button--remove">
+    -
+  </button> <button type="button" tabindex="-1" class="number-input__button number-input__button--add">
+    +
+  </button>
+  <!---->
+</div>
+`;
