@@ -6,23 +6,33 @@
       <b-button :type="secondary" @click="onClick">Secondary</b-button>
     </div>
     <div class="demo__item">
+      <div class="demo__item-label">Text Input:</div>
+      <b-text-input placeholder="placeholder" v-model="inputValue"/>
       <div class="demo__item-label">Number Input:</div>
       <b-number-input :min="minInputValue" v-model="numberValue"/>
+    </div>
+    <div class="demo__item">
+      <div class="demo__item-label">Check box:</div>
+      <b-checkbox v-model="checkBoxValue"/>
     </div>
   </div>
 </template>
 
 <script>
-  import BNumberInput from "../components/Input/NumberInput";
-  import BButton from "../components/Button/BaseButton"
+  import bNumberInput from "../components/Input/NumberInput";
+  import bButton from "../components/Button/BaseButton";
+  import bTextInput from "../components/Input/TextInput"
+  import bCheckbox from "../components/Checkbox/BaseCheckbox";
   import { TYPE } from "../components/Button/BaseButton.types";
 
   export default {
-    components: { BNumberInput, BButton },
+    components: { bNumberInput, bButton, bTextInput, bCheckbox },
     data() {
       return {
         numberValue: 1,
         minInputValue: 0,
+        inputValue:"",
+        checkBoxValue: true
       }
     },
     methods: {

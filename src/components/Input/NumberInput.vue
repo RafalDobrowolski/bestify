@@ -129,6 +129,7 @@ export default {
       }
     },
     removeNumber() {
+      debugger
       if (this.decreasable) {
         if (this.isNotNumber(this.currentValue)) {
           this.currentValue = 0;
@@ -183,9 +184,9 @@ export default {
   }
 
   &__sufix-label {
-    margin-left: 5px;
+    @include rem(margin-left, 5px);
     align-self: center;
-    font-size: 14px;
+    @include rem(font-size, 14px);
   }
 }
 </style>

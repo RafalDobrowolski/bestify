@@ -12,6 +12,16 @@ $input-height: $line-height * $font-size;
   font-size: $font-size;
   outline: none;
   width: calc(100% - 22px);
+  box-shadow: $box-shadow-light;
+
+  &:focus {
+    border-color: $color-grey-50;
+    outline: none;
+  }
+  &:disabled,
+  &[readonly] {
+    background-color: $color-blue-grey-50;
+  }
 }
 
 
