@@ -1,9 +1,10 @@
 <template>
   <renderless-tab
     :tabs="options"
+    :showIcon="showIcon"
     @selectedTabItem="(selctedTabData) => $emit('tab', selctedTabData)"
   >
-    <template v-slot="{ tabs, openTab }">
+    <template v-slot="{ tabs, openTab, showIcon }">
       <slot name="tab" :tabsData="tabs" :activeTab="activeTab" :openTab="openTab">
         <div class="tab">
           <ul class="tab__items">
