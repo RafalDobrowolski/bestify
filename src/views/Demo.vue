@@ -23,11 +23,7 @@
             :options="tabs"
             :showIcon="showIcon"
             @tab="switchTab($event)"
-          >
-            <!-- <template v-slot:tab-item="{ option }">
-              <span class="demo__tab-text">{{ option }}</span>
-            </template> -->
-          </b-base-tab>
+          />
           <component class="demo__tab-component" v-bind:is="activeTabComponent"/>
         </div>
     </div>
