@@ -4,6 +4,10 @@
       tabs: {
         type: Array,
         default: () => []
+      },
+      showIcon: {
+        type: Boolean,
+        default: false
       }
     },
     methods: {
@@ -14,7 +18,8 @@
     render() {
       return this.$scopedSlots.default({
         tabs: this.tabs,
-        openTab: this.openTab
+        openTab: this.openTab,
+        showIcon: this.showIcon
       });
     }
   }
